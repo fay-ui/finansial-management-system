@@ -1,1 +1,111 @@
-Generic single-database configuration.
+Financial Management System
+Description
+The Financial Management System is a personal finance tracking application built with Python, SQLAlchemy, and SQLite. It helps users manage their financial accounts, transactions, and budgets. This system allows users to:
+
+Create and manage multiple accounts (e.g., savings, checking).
+Track transactions linked to specific accounts.
+Set and manage budgets for each account.
+View the balance and transactions of each account.
+The project demonstrates database management using SQLAlchemy for Object-Relational Mapping (ORM) and Alembic for database migrations.
+
+Features
+Account Management: Create and manage different financial accounts, such as savings and checking accounts.
+Transaction Management: Record and track transactions, including deposits, withdrawals, and transfers.
+Budget Management: Create and manage budgets for each account to track spending.
+Technologies Used
+Python: The core programming language for the application.
+SQLAlchemy: ORM (Object-Relational Mapping) tool for interacting with the SQLite database.
+SQLite: Lightweight relational database for data storage.
+Alembic: Database migration tool for tracking changes in the database schema.
+unittest: Unit testing framework to ensure the integrity and functionality of the system.
+Requirements
+Python 3.x (tested with 3.8)
+SQLAlchemy (for ORM)
+Alembic (for migrations)
+SQLite (for the database)
+You can install the required dependencies using:
+
+bash
+Copy code
+pip install -r requirements.txt
+requirements.txt
+makefile
+Copy code
+SQLAlchemy==2.0.36
+Alembic==1.14.0
+Database Models
+The system uses the following models, defined using SQLAlchemy ORM:
+
+1. Account Model
+Stores information about a financial account:
+
+account_id: Unique identifier for the account.
+name: Name of the account (e.g., "Savings Account").
+type: Type of account (e.g., "Personal", "Business").
+description: Optional description of the account.
+balance: The balance of the account.
+2. Transaction Model
+Stores transaction records linked to accounts:
+
+transaction_id: Unique identifier for the transaction.
+account_id: Foreign key linking to the Account model.
+type: Type of transaction (e.g., "Deposit", "Withdrawal").
+amount: Amount involved in the transaction.
+description: Optional description of the transaction.
+date: Date of the transaction.
+budget_id: Foreign key linking to the Budget model (optional).
+3. Budget Model
+Stores budget information linked to accounts:
+
+budget_id: Unique identifier for the budget.
+account_id: Foreign key linking to the Account model.
+name: Name of the budget (e.g., "Emergency Fund").
+amount: The budgeted amount.
+category: Category of the budget (e.g., "Savings", "Food").
+Getting Started
+Step 1: Set Up Database
+Clone or download the repository.
+Install the required Python libraries:
+bash
+Copy code
+pip install -r requirements.txt
+Run Alembic migrations to set up the database schema:
+bash
+Copy code
+alembic upgrade head
+Step 2: Create Tables
+If the tables aren't automatically created with migrations, you can manually create them by calling the create_tables() function in the db.py file:
+
+python
+Copy code
+from db import create_tables
+create_tables()
+Step 3: Add Data
+You can add accounts, transactions, and budgets by running the add_data.py script:
+
+bash
+Copy code
+python add_data.py
+This will:
+
+Add a new account.
+Add a budget for that account.
+Add a transaction linked to the account and the budget.
+Step 4: Run Unit Tests
+The project also includes unit tests to ensure that the data integrity is maintained. You can run the tests using the following command:
+
+bash
+Copy code
+python -m unittest discover
+This will run the tests in the project and verify the functionality of the system.
+
+                
+Contributing
+Feel free to fork the repository and submit pull requests. Contributions are welcome to improve the system's functionality, bug fixes, or enhancements.
+
+License
+This project is licensed under the MIT License - see the LICENSE file for details.
+
+LINKS
+here is my slide link:https://powerpoint.cloud.microsoft/open/onedrive/?docId=CC11DE6B9
+
